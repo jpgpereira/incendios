@@ -1,0 +1,144 @@
+@import 'app-variables';
+
+@import '.meteor/local/build/programs/server/assets/packages/meteoric_ionic-sass/ionic';
+@import '.meteor/local/build/programs/server/assets/packages/meteoric_ionicons-sass/ionicons';
+
+.map-container {
+  width: 100%;
+  height: 100%;
+}
+
+.footer {
+  text-align: center;
+  bottom: 5%;
+  width: 100%;
+  position: absolute;
+}
+
+.modal {
+  background-color: $background;
+  color: $text-color;
+}
+
+.credits {
+  padding: 20px;
+  text-align: justify;
+}
+
+.bar.bar-stable .title {
+  background-color: $popup-head-background;
+  color: #efefef;
+}
+
+.bar.bar-header.bar-stable {
+  border-color: #b2b2b2;
+  background-color: $popup-head-background;
+  color: #efefef;
+  button {
+    color: #efefef;
+    :before {
+      font-size: 50px !important;  
+    }
+  }
+  h2 {
+    font-size: $modal-title-size;
+  }
+}
+
+.help {
+  position: absolute;
+  left: 2%;
+  border-color: transparent;
+  background: none;
+}
+
+.info {
+  position: absolute;
+  z-index: 1001;
+  color: $title-color;
+  font-size: $icon-size;
+}
+
+.small {
+  font-size: $text-size-small !important;
+}
+
+.highlight {
+  font-size: $text-size-larger !important;
+}
+
+.popup-container .popup {
+  width: auto;
+  height: auto;
+  max-height: 70%;
+  padding: 0 !important;
+  background-color: $background;
+}
+
+.popup p {
+  text-align: left;
+  margin-left: 5%;
+  font-size: $text-size;
+  color: $text-color;
+}
+
+.button.button-royal {
+  border-color: $royal;
+  background-color: $royal;
+  color: #efefef;
+}
+
+.popup-head {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 60px;
+  padding-right: 60px;
+  background-color: $popup-head-background;
+  border-bottom: 3px solid $popup-border;
+  //border-bottom: 0;
+  //border-bottom-left-radius: 40%;
+}
+
+
+.popup-body {
+  margin-top: 10px;
+}
+
+.popup-title {
+  font-size: $popup-title-size;
+  //text-transform: uppercase;
+  color: $title-color;
+}
+
+a {
+  text-decoration: none;
+  color: $aref;
+}
+
+a:visited {
+  color: $aref;
+}
+
+@media (min-width: 680px){
+  .modal {
+    top: 10%;
+    right: 20%;
+    bottom: 10%;
+    left: 20%;
+    overflow: visible;
+    min-height: 360px;
+    width: 60%;
+  }
+}
+
+@media (min-width: 980px) {
+  .modal {
+    top: 20%;
+    right: 20%;
+    bottom: 20%;
+    left: 20%;
+    overflow: visible;
+    min-height: 240px;
+    width: 60%;
+  }
+}

@@ -1,0 +1,20 @@
+<template name="_infoModal">
+  {{#ionModal title="Informações"}}
+    <div class="padding">
+      <div class="credits">
+        <p>Dados retirados do <a href="https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms">FIRMS</a> - Fire Information for Resource Management System.
+        <br>
+        Os pontos observados são actualizados quase em tempo real, com um intervalo no máximo de 3 horas após a sua detecção, e podem corresponder a uma área de 1km do seu centro.
+        <br>
+        Para uma melhor observação dos dados, as cores correspondem ao nível de certeza dos fogos e a opacidade à temperatura registada pelo satélite.</p>
+        <p>Os resultados obtidos podem conter erros e por isso não ser fídedignos, consulte sempre os dados da Proteção Cívil <a href="http://www.proteccaocivil.pt/cnos/inc_florestais/Inc%C3%AAndios%20Rurais%20-%20SIP.pdf">aqui</a>.</p>
+      </div>
+      <br>
+      <div class="footer">
+        <p class="small">Feito por <a href="http://jpgpereira.com">jpgpereira</a></p>
+        <p class="small">Última atualização: {{lastUpdate}}.</p>
+        <p class="highlight">Desenvolvido com <a href="http://www.meteor.com">Meteor</a> e <a href="http://meteoric.github.io/">Meteoric</a>.</p>
+      </div>
+    </div>
+  {{/ionModal}}
+</template>

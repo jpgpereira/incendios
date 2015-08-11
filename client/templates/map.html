@@ -1,0 +1,8 @@
+<template name="map">
+  {{#ionView}}
+    {{#ionContent class="map-container"}}
+      <button class="help" data-ion-modal="_infoModal"><i class="icon ion-information-circled info"></i></button>
+      {{> googleMap name="map" options=mapOptions}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>
