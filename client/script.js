@@ -80,9 +80,9 @@ function loadData (map) {
         time: time,
         temp: fire.data.temp
       });
-      if (fire.data.confidence < 30) {
-        var color = '#FBC02D';
-      } else if (fire.data.confidence >= 30 && fire.data.confidence < 80) {
+      if (fire.data.confidence < 50) {
+        var color = '#F57F17';
+      } else if (fire.data.confidence >= 50 && fire.data.confidence < 80) {
         var color = '#E65100';
       } else if (fire.data.confidence >= 80) {
         var color = '#b71c1c';

@@ -24,42 +24,44 @@ function updateData () {
     for (var i = fires.data.length - 1; i >= 0; i--) {
       if(fires.data[i].latitude >= minLat && fires.data[i].latitude <= maxLat) {
         if(fires.data[i].longitude >= minLng && fires.data[i].longitude <= maxLng) {
-          var lat = fires.data[i].latitude;
-          var lng = fires.data[i].longitude;
-          var at = fires.data[i].acq_date;
-          var existing = Fires.find({ type: "fogo", lat: lat, lng: lng, date: at });
-          if(existing.count() > 0) {
-            Fires.update({ type: "fogo", lat: lat, lng: lng, date: at }, { $set: { checked: true } });
-          } else {
-            var data = HTTP.get("http://api.geonames.org/findNearbyPlaceNameJSON?lat="+fires.data[i].latitude+"&lng="+fires.data[i].longitude+"&username=jpgpereira");
-            if(data.statusCode == 200) {
-              var loc = JSON.parse(data.content);
-              if(loc.geonames){
-                local = JSON.parse(data.content).geonames[0].name;
+          if(fire.data[i].confidence >= 30) {
+            var lat = fires.data[i].latitude;
+            var lng = fires.data[i].longitude;
+            var at = fires.data[i].acq_date;
+            var existing = Fires.find({ type: "fogo", lat: lat, lng: lng, date: at });
+            if(existing.count() > 0) {
+              Fires.update({ type: "fogo", lat: lat, lng: lng, date: at }, { $set: { checked: true } });
+            } else {
+              var data = HTTP.get("http://api.geonames.org/findNearbyPlaceNameJSON?lat="+fires.data[i].latitude+"&lng="+fires.data[i].longitude+"&username=jpgpereira");
+              if(data.statusCode == 200) {
+                var loc = JSON.parse(data.content);
+                if(loc.geonames){
+                  local = JSON.parse(data.content).geonames[0].name;
+                } else {
+                  local = "Local desconhecido";
+                }
               } else {
+                console.log(data);
                 local = "Local desconhecido";
               }
-            } else {
-              console.log(data);
-              local = "Local desconhecido";
+              obj = {
+                lat: fires.data[i].latitude,
+                lng: fires.data[i].longitude,
+                confidence: fires.data[i].confidence,
+                date: fires.data[i].acq_date,
+                time: fires.data[i].acq_time,
+                temp: Math.round(fires.data[i].brightness-273.15),
+                local: local
+              }
+              Fires.insert({
+                type: 'fogo',
+                checked: true,
+                lat: obj.lat,
+                lng: obj.lng,
+                date: obj.date,
+                data: obj
+              });
             }
-            obj = {
-              lat: fires.data[i].latitude,
-              lng: fires.data[i].longitude,
-              confidence: fires.data[i].confidence,
-              date: fires.data[i].acq_date,
-              time: fires.data[i].acq_time,
-              temp: Math.round(fires.data[i].brightness-273.15),
-              local: local
-            }
-            Fires.insert({
-              type: 'fogo',
-              checked: true,
-              lat: obj.lat,
-              lng: obj.lng,
-              date: obj.date,
-              data: obj
-            });
           }
         }
       }
