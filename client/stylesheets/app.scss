@@ -1,7 +1,7 @@
-@import 'app-variables';
+@import 'sass/app-variables';
 
-@import '.meteor/local/build/programs/server/assets/packages/meteoric_ionic-sass/ionic';
-@import '.meteor/local/build/programs/server/assets/packages/meteoric_ionicons-sass/ionicons';
+@import 'sass/_ionic';
+@import 'sass/_ionicons';
 
 .map-container {
   width: 100%;
