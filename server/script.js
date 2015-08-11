@@ -24,7 +24,7 @@ function updateData () {
     for (var i = fires.data.length - 1; i >= 0; i--) {
       if(fires.data[i].latitude >= minLat && fires.data[i].latitude <= maxLat) {
         if(fires.data[i].longitude >= minLng && fires.data[i].longitude <= maxLng) {
-          if(fire.data[i].confidence >= 30) {
+          if(fires.data[i].confidence >= 30) {
             var lat = fires.data[i].latitude;
             var lng = fires.data[i].longitude;
             var at = fires.data[i].acq_date;
