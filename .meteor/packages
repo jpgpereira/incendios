@@ -16,3 +16,4 @@ fourseven:scss@2.0.0
 iron:router
 momentjs:moment
 mrt:moment-timezone
+meteorhacks:kadira
