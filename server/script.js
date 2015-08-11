@@ -72,7 +72,7 @@ function updateData () {
     update.forEach(function (fire) {
       Fires.update({ _id: fire._id }, { $set: { checked: false } });
     });
-    var date = moment().format("DD[/]MM[/]YYYY, [às] HH:mm[h]");
+    var date = moment().tz("Europe/Lisbon").format("DD[/]MM[/]YYYY, [às] HH:mm[h]");
     Fires.insert({
       type: 'date',
       data: date
