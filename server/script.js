@@ -44,22 +44,21 @@ function updateData () {
                 console.log(data);
                 local = "Local desconhecido";
               }
-              obj = {
-                lat: fires.data[i].latitude,
-                lng: fires.data[i].longitude,
-                confidence: fires.data[i].confidence,
-                date: fires.data[i].acq_date,
-                time: fires.data[i].acq_time,
-                temp: Math.round(fires.data[i].brightness-273.15),
-                local: local
-              }
               Fires.insert({
                 type: 'fogo',
                 checked: true,
-                lat: obj.lat,
-                lng: obj.lng,
-                date: obj.date,
-                data: obj
+                lat: fires.data[i].latitude,
+                lng: fires.data[i].longitude,
+                date: fires.data[i].date,
+                data: {
+                  lat: fires.data[i].latitude,
+                  lng: fires.data[i].longitude,
+                  confidence: fires.data[i].confidence,
+                  date: fires.data[i].acq_date,
+                  time: fires.data[i].acq_time,
+                  temp: Math.round(fires.data[i].brightness-273.15),
+                  local: local
+                }
               });
             }
           }
