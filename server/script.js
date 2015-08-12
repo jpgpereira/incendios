@@ -49,7 +49,7 @@ function updateData () {
                 checked: true,
                 lat: fires.data[i].latitude,
                 lng: fires.data[i].longitude,
-                date: fires.data[i].date,
+                date: fires.data[i].acq_date,
                 data: {
                   lat: fires.data[i].latitude,
                   lng: fires.data[i].longitude,
