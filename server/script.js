@@ -63,6 +63,32 @@ function updateData () {
             }
           }
         }
+      } else {
+        var lat = fires.data[i].latitude;
+        var lng = fires.data[i].longitude;
+        var at = fires.data[i].acq_date;
+        var existing = Fires.find({ type: "fogo", lat: lat, lng: lng, date: at });
+        if(existing.count() > 0) {
+          Fires.update({ type: "fogo", lat: lat, lng: lng, date: at }, { $set: { checked: true } });
+        } else {
+          local = "Local desconhecido";
+          Fires.insert({
+            type: 'fogo',
+            checked: true,
+            lat: fires.data[i].latitude,
+            lng: fires.data[i].longitude,
+            date: fires.data[i].acq_date,
+            data: {
+              lat: fires.data[i].latitude,
+              lng: fires.data[i].longitude,
+              confidence: fires.data[i].confidence,
+              date: fires.data[i].acq_date,
+              time: fires.data[i].acq_time,
+              temp: Math.round(fires.data[i].brightness-273.15),
+              local: local
+            }
+          });
+        }
       }
     };
     console.log("Removing old data...");
