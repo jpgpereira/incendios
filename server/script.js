@@ -5,7 +5,7 @@ Meteor.startup(function () {
 
 function updateData () {
   console.log("Updating...");
-  var data = HTTP.get("https://firms.modaps.eosdis.nasa.gov/active_fire/text/Europe_24h.csv").content;
+  var data = HTTP.get("https://firms.modaps.eosdis.nasa.gov/active_fire/c6/text/MODIS_C6_Europe_24h.csv").content;
   if(data) {
     console.log("Parsing...");
     var fires = Baby.parse(data, {
